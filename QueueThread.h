@@ -123,6 +123,13 @@ inline void QueueThread<T>::QueueProcessThread()
 			return !m_queue.empty() || m_bExit;
 		});
 
+		if (m_bExit)
+		{
+			ProcessQueueData(queue);
+			lock.unlock();
+			break;
+		}
+
 		std::queue<T> queue;
 		queue.swap(m_queue);
 		lock.unlock();

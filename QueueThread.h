@@ -125,7 +125,7 @@ inline void QueueThread<T>::QueueProcessThread()
 
 		if (m_bExit)
 		{
-			ProcessQueueData(queue);
+			ProcessQueueData(m_queue);
 			lock.unlock();
 			break;
 		}
